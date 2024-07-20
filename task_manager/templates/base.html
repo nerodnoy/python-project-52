@@ -1,0 +1,39 @@
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!doctype html>
+<html lang="{% get_current_language as LANGUAGE_CODE %}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% trans 'Task Manager' %}</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">{% trans 'Task Manager' %}</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">{% trans 'Home' %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{% trans 'Login' %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{% trans 'Register' %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{% trans 'Users' %}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+    {% bootstrap_javascript %}
+  </body>
+</html>
