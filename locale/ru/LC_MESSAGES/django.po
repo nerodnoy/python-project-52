@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-20 13:45+0300\n"
+"POT-Creation-Date: 2024-07-23 14:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,34 +20,45 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\task_manager\templates\base.html:2
-msgid "en"
-msgstr ""
-
-#: .\task_manager\templates\base.html:6 .\task_manager\templates\base.html:11
+#: .\task_manager\templates\base.html:11
+#: .\task_manager\templates\navbar.html:4
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: .\task_manager\templates\base.html:15
-msgid "Home"
-msgstr "Главная"
-
-#: .\task_manager\templates\base.html:18
-msgid "Login"
-msgstr "Логин"
-
-#: .\task_manager\templates\base.html:21
-msgid "Register"
-msgstr "Регистрация"
-
-#: .\task_manager\templates\base.html:24
-msgid "Users"
-msgstr "Пользователи"
-
-#: .\task_manager\templates\index.html:5
+#: .\task_manager\templates\index.html:6
 msgid "Welcome to Task Manager"
 msgstr "Добро пожаловать в Менеджер задач"
 
-#: .\task_manager\templates\index.html:6
+#: .\task_manager\templates\index.html:7
 msgid "This is the best task manager you have ever seen."
 msgstr "Это лучший менеджер задач, который вы видели"
+
+#: .\task_manager\templates\navbar.html:8
+#: .\task_manager\templates\users\login.html:6
+#: .\task_manager\templates\users\login.html:10
+msgid "Login"
+msgstr "Логин"
+
+#: .\task_manager\templates\navbar.html:11
+msgid "Register"
+msgstr "Регистрация"
+
+#: .\task_manager\templates\navbar.html:14
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\task_manager\templates\users\user_delete.html:6
+msgid "Are you sure you want to delete an account?"
+msgstr "Вы уверены, что хотите удалить аккаунт?"
+
+#: .\task_manager\templates\users\user_delete.html:9
+#: .\task_manager\templates\users\user_list.html:9
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\task_manager\templates\users\user_form.html:10
+msgid "Save"
+msgstr "Сохранить"
+
+#~ msgid "Home"
+#~ msgstr "Главная"
