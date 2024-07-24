@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from .forms import UserRegister, UserUpdate
+from .forms import UserForm
 from .models import User
 
 
@@ -11,25 +11,19 @@ class UserListView(ListView):
 
 
 class UserCreateView(CreateView):
-    form_class = UserRegister
+    form_class = UserForm
     template_name = 'users/user_form.html'
     success_url = '/'
 
 
 class UserUpdateView(UpdateView):
     model = User
-    form_class = UserUpdate
+    form_class = UserForm
     template_name = 'users/user_form.html'
     success_url = reverse_lazy('user_list')
-
-    def get_object(self, queryset=None):
-        return self.request.user
 
 
 class UserDeleteView(DeleteView):
     model = User
     template_name = 'users/user_delete.html'
     success_url = reverse_lazy('user_list')
-
-    def get_object(self, queryset=None):
-        return self.request.user
