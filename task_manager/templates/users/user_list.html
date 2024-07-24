@@ -4,9 +4,31 @@
 
 {% block content %}
 <h2>{% trans "Users" %}</h2>
-<ul>
-    {% for user in object_list %}
-    <li>{{ user.username }} - <a href="{% url 'user_update' user.pk %}">{% trans "Edit" %}</a> - <a href="{% url 'user_delete' user.pk %}">{% trans "Delete" %}</a></li>
-    {% endfor %}
-</ul>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>{% trans "Username" %}</th>
+      <th>{% trans "Fullname" %}</th>
+      <th>{% trans "Date of creation" %}</th>
+      <th></th>
+    </tr>
+  </thead>
+  {% for user in object_list %}
+  <tbody>
+    <tr>
+      <th>{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.first_name }} {{ user.last_name }}</td>
+      <td>{{ user.date_joined }}</td>
+        <td>
+          <a href="{% url 'user_update' user.id %}">{% trans "Edit" %}</a>
+          <br>
+          <a href="{% url 'user_delete' user.id %}">{% trans "Delete" %}</a>
+        </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 11:11+0300\n"
+"POT-Creation-Date: 2024-07-24 12:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,42 +34,59 @@ msgid "This is the best task manager you have ever seen."
 msgstr "Это лучший менеджер задач, который вы видели"
 
 #: .\task_manager\templates\navbar.html:8
+#: .\task_manager\templates\users\user_list.html:6
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\task_manager\templates\navbar.html:11
 #: .\task_manager\templates\users\login.html:6
 #: .\task_manager\templates\users\login.html:10
 msgid "Login"
 msgstr "Вход"
 
-#: .\task_manager\templates\navbar.html:11
+#: .\task_manager\templates\navbar.html:14
 msgid "Register"
 msgstr "Регистрация"
 
-#: .\task_manager\templates\navbar.html:14
-#: .\task_manager\templates\users\user_list.html:6
-msgid "Users"
-msgstr "Пользователи"
-
 #: .\task_manager\templates\users\user_delete.html:6
-msgid "Are you sure you want to delete an account?"
-msgstr "Вы уверены, что хотите удалить аккаунт?"
+msgid "User delete"
+msgstr "Удаление пользователя"
 
-#: .\task_manager\templates\users\user_delete.html:9
-#: .\task_manager\templates\users\user_list.html:9
+#: .\task_manager\templates\users\user_delete.html:7
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: .\task_manager\templates\users\user_delete.html:10
+#: .\task_manager\templates\users\user_list.html:28
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\task_manager\templates\users\user_form.html:6
-#, fuzzy
-#| msgid "Register"
+#: .\task_manager\templates\users\user_form.html:9
 msgid "Registration"
 msgstr "Регистрация"
 
-#: .\task_manager\templates\users\user_form.html:10
-msgid "Save"
-msgstr "Сохранить"
+#: .\task_manager\templates\users\user_form.html:15
+msgid "Register New User"
+msgstr "Зарегистрировать"
 
-#: .\task_manager\templates\users\user_list.html:9
+#: .\task_manager\templates\users\user_list.html:12
+msgid "Username"
+msgstr "Пользователи"
+
+#: .\task_manager\templates\users\user_list.html:13
+msgid "Fullname"
+msgstr "Полное имя"
+
+#: .\task_manager\templates\users\user_list.html:14
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: .\task_manager\templates\users\user_list.html:26
 msgid "Edit"
 msgstr "Изменить"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
 
 #~ msgid "Home"
 #~ msgstr "Главная"
