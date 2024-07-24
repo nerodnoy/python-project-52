@@ -11,9 +11,10 @@ class UserListView(ListView):
 
 
 class UserCreateView(CreateView):
+    model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
-    success_url = '/'
+    success_url = reverse_lazy('login')
 
 
 class UserUpdateView(UpdateView):
