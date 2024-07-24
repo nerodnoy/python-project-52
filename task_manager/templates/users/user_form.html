@@ -3,7 +3,7 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h2>{{ view.title }}</h2>
+<h2>{% trans "Registration" %}</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

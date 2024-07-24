@@ -3,10 +3,10 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h2>Users</h2>
+<h2>{% trans "Users" %}</h2>
 <ul>
     {% for user in object_list %}
-    <li>{{ user.username }} - <a href="{% url 'user_update' user.pk %}">Edit</a> - <a href="{% url 'user_delete' user.pk %}">{% trans "Delete" %}</a></li>
+    <li>{{ user.username }} - <a href="{% url 'user_update' user.pk %}">{% trans "Edit" %}</a> - <a href="{% url 'user_delete' user.pk %}">{% trans "Delete" %}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

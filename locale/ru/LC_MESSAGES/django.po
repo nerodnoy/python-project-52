@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-23 14:23+0300\n"
+"POT-Creation-Date: 2024-07-24 11:11+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,13 +37,14 @@ msgstr "Это лучший менеджер задач, который вы в�
 #: .\task_manager\templates\users\login.html:6
 #: .\task_manager\templates\users\login.html:10
 msgid "Login"
-msgstr "Логин"
+msgstr "Вход"
 
 #: .\task_manager\templates\navbar.html:11
 msgid "Register"
 msgstr "Регистрация"
 
 #: .\task_manager\templates\navbar.html:14
+#: .\task_manager\templates\users\user_list.html:6
 msgid "Users"
 msgstr "Пользователи"
 
@@ -56,9 +57,19 @@ msgstr "Вы уверены, что хотите удалить аккаунт?"
 msgid "Delete"
 msgstr "Удалить"
 
+#: .\task_manager\templates\users\user_form.html:6
+#, fuzzy
+#| msgid "Register"
+msgid "Registration"
+msgstr "Регистрация"
+
 #: .\task_manager\templates\users\user_form.html:10
 msgid "Save"
 msgstr "Сохранить"
+
+#: .\task_manager\templates\users\user_list.html:9
+msgid "Edit"
+msgstr "Изменить"
 
 #~ msgid "Home"
 #~ msgstr "Главная"
