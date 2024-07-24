@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from task_manager.mixins import UserPermissionMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.urls import reverse_lazy
 from .forms import UserForm
 from .models import User
-from ..mixins import UserPermissionMixin
 
 
 class UserListView(ListView):

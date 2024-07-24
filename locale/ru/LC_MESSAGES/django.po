@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 12:26+0300\n"
+"POT-Creation-Date: 2024-07-24 13:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,20 +33,27 @@ msgstr "Добро пожаловать в Менеджер задач"
 msgid "This is the best task manager you have ever seen."
 msgstr "Это лучший менеджер задач, который вы видели"
 
+#: .\task_manager\templates\login.html:6
+#: .\task_manager\templates\navbar.html:11
+msgid "Login"
+msgstr "Вход"
+
+#: .\task_manager\templates\login.html:11
+msgid "Login As User"
+msgstr "Войти"
+
 #: .\task_manager\templates\navbar.html:8
 #: .\task_manager\templates\users\user_list.html:6
 msgid "Users"
 msgstr "Пользователи"
 
-#: .\task_manager\templates\navbar.html:11
-#: .\task_manager\templates\users\login.html:6
-#: .\task_manager\templates\users\login.html:10
-msgid "Login"
-msgstr "Вход"
-
 #: .\task_manager\templates\navbar.html:14
 msgid "Register"
 msgstr "Регистрация"
+
+#: .\task_manager\templates\navbar.html:19
+msgid "Logout"
+msgstr "Выход"
 
 #: .\task_manager\templates\users\user_delete.html:6
 msgid "User delete"
