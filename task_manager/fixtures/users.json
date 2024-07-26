@@ -1,0 +1,102 @@
+[
+    {
+        "model": "users.User",
+        "pk": 1,
+        "fields": {
+            "username": "Lightning_McQueen",
+            "first_name": "Lightning",
+            "last_name": "McQueen",
+            "password": "LightningMcQueen-Fast"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "username": "Chico_Hicks",
+            "first_name": "Chico",
+            "last_name": "Hicks",
+            "password": "Ka-Chico!"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "username": "Mater",
+            "first_name": "Tow",
+            "last_name": "Mater",
+            "password": "Rusty-and-Trusty"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "username": "Sally",
+            "first_name": "Sally",
+            "last_name": "Carrera",
+            "password": "Elegant-and-Classy"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 5,
+        "fields": {
+            "username": "Doc_Hudson",
+            "first_name": "Doc",
+            "last_name": "Hudson",
+            "password": "The-King-of-the-Track"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 13,
+        "fields": {
+            "username": "Ramone",
+            "first_name": "Ramone",
+            "last_name": "Flores",
+            "password": "Artistic-and-Unique"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 69,
+        "fields": {
+            "username": "Luigi",
+            "first_name": "Luigi",
+            "last_name": "Tire",
+            "password": "Pit-Stop!"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 1337,
+        "fields": {
+            "username": "Guido",
+            "first_name": "Guido",
+            "last_name": "Tire",
+            "password": "Little-and-Quick"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 9,
+        "fields": {
+            "username": "Fillmore",
+            "first_name": "Fillmore",
+            "last_name": "Van",
+            "password": "Peaceful-Vibes"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 10,
+        "fields": {
+            "username": "Sheriff",
+            "first_name": "Sheriff",
+            "last_name": "Police",
+            "password": "Enforcer-of-the-Law"
+        }
+    }
+]
