@@ -17,20 +17,38 @@ class UserCreateView(CreateView):
     template_name = 'users/user_form.html'
     success_url = reverse_lazy('login')
 
+    extra_context = {
+        'title': 'Create user',
+        'button_name': 'Register',
+    }
 
-# class UserUpdateView(AuthRequired, PermissionRequired, UpdateView):
-class UserUpdateView(UpdateView):
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
     success_url = reverse_lazy('user_list')
 
+    # LoginRequiredMixin возможности:
+    # если не авторизован, то перенаправляем на /login/
 
-# class UserDeleteView(AuthRequired, PermissionRequired, DeleteView):
-class UserDeleteView(DeleteView):
+    # login_url = reverse_lazy('login')
+
+    extra_context = {
+        'title': 'Update user',
+        'button_name': 'Update',
+    }
+
+
+class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'users/user_delete.html'
     success_url = reverse_lazy('user_list')
+
+    # LoginRequiredMixin возможности:
+    # если не авторизован, то перенаправляем на /login/
+
+    # login_url = reverse_lazy('login')
 
 # AuthRequired
 # PermissionRequired

@@ -15,6 +15,11 @@ class StatusCreateView(CreateView):
     template_name = 'statuses/status_form.html'
     success_url = reverse_lazy('status_list')
 
+    extra_context = {
+        'title': 'Create status',
+        'button_name': 'Create',
+    }
+
 
 # class StatusUpdateView(LoginRequiredMixin, UserPermissionMixin, UpdateView):
 class StatusUpdateView(UpdateView):
@@ -23,8 +28,12 @@ class StatusUpdateView(UpdateView):
     template_name = 'statuses/status_form.html'
     success_url = reverse_lazy('status_list')
 
+    extra_context = {
+        'title': 'Update status',
+        'button_name': 'Update',
+    }
 
-# class StatusDeleteView(LoginRequiredMixin, UserPermissionMixin, DeleteView):
+
 class StatusDeleteView(DeleteView):
     model = Status
     success_url = reverse_lazy('status_list')

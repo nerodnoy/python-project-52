@@ -6,13 +6,13 @@
 <form method="post">
 <div class="container col-7">
   <br>
-  <h3>{% trans "Create status" %}</h3>
+  <h3>{{ title }}</h3>
   <div class="form-group">
     <br>
     {% csrf_token %}
-    {% bootstrap_form form %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_name button_type="submit" button_class="btn btn-primary" %}
   </div>
-    <button type="submit">{% trans "Create new status" %}</button>
 </div>
 </form>
 {% endblock %}
