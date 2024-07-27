@@ -1,22 +1,12 @@
-# from django.contrib.auth.mixins import UserPassesTestMixin
-# from django.http import HttpResponseRedirect
-# from django.urls import reverse
-#
-#
-# class UserPermissionMixin(UserPassesTestMixin):
-#
-#     def test_func(self):
-#         obj = self.get_object()
-#         return obj == self.request.user
-#
-#     def handle_no_permission(self):
-#         # Тут переработать
-#         return HttpResponseRedirect(reverse('login'))
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 
-class AuthRequired:
-    pass
+class AuthRequiredMixin(LoginRequiredMixin):
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(reverse_lazy('login'))
 
-class PermissionRequired:
-    pass
+        return super().dispatch(request, *args, **kwargs)

@@ -1,15 +1,16 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from task_manager.mixins import AuthRequiredMixin
 from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
 
 
-class StatusListView(ListView):
+class StatusListView(AuthRequiredMixin, ListView):
     model = Status
     template_name = 'statuses/status_list.html'
 
 
-class StatusCreateView(CreateView):
+class StatusCreateView(AuthRequiredMixin, CreateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/status_form.html'
@@ -22,7 +23,7 @@ class StatusCreateView(CreateView):
 
 
 # class StatusUpdateView(LoginRequiredMixin, UserPermissionMixin, UpdateView):
-class StatusUpdateView(UpdateView):
+class StatusUpdateView(AuthRequiredMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/status_form.html'
@@ -34,7 +35,7 @@ class StatusUpdateView(UpdateView):
     }
 
 
-class StatusDeleteView(DeleteView):
+class StatusDeleteView(AuthRequiredMixin, DeleteView):
     model = Status
     success_url = reverse_lazy('status_list')
     template_name = 'statuses/delete_status.html'

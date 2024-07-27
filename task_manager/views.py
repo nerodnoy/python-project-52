@@ -11,7 +11,6 @@ class IndexView(TemplateView):
 class UserLoginView(LoginView):
     template_name = 'login.html'
     form_class = AuthenticationForm
-    redirect_authenticated_user = True
     next_page = reverse_lazy('home')
 
 
