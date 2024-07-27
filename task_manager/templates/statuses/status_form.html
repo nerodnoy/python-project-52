@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<form method="post">
+<div class="container col-7">
+  <br>
+  <h3>{% trans "Create status" %}</h3>
+  <div class="form-group">
+    <br>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+  </div>
+    <button type="submit">{% trans "Create new status" %}</button>
+</div>
+</form>
+{% endblock %}

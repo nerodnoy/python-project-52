@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 13:15+0300\n"
+"POT-Creation-Date: 2024-07-27 12:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,18 +55,54 @@ msgstr "Регистрация"
 msgid "Logout"
 msgstr "Выход"
 
-#: .\task_manager\templates\users\user_delete.html:6
-msgid "User delete"
+#: .\task_manager\templates\statuses\status_delete.html:6
+msgid "Status delete"
 msgstr "Удаление пользователя"
 
+#: .\task_manager\templates\statuses\status_delete.html:7
 #: .\task_manager\templates\users\user_delete.html:7
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
+#: .\task_manager\templates\statuses\status_delete.html:10
 #: .\task_manager\templates\users\user_delete.html:10
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: .\task_manager\templates\statuses\status_form.html:9
+msgid "Create status"
+msgstr "Создать статус"
+
+#: .\task_manager\templates\statuses\status_form.html:15
+msgid "Create new status"
+msgstr "Создать"
+
+#: .\task_manager\templates\statuses\status_list.html:6
+msgid "Statuses"
+msgstr "Cтатусы"
+
+#: .\task_manager\templates\statuses\status_list.html:12
+msgid "Status name"
+msgstr "Имя"
+
+#: .\task_manager\templates\statuses\status_list.html:13
+#: .\task_manager\templates\users\user_list.html:14
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: .\task_manager\templates\statuses\status_list.html:24
+#: .\task_manager\templates\users\user_list.html:26
+msgid "Edit"
+msgstr "Изменить"
+
+#: .\task_manager\templates\statuses\status_list.html:26
 #: .\task_manager\templates\users\user_list.html:28
 msgid "Delete"
 msgstr "Удалить"
+
+#: .\task_manager\templates\users\user_delete.html:6
+msgid "User delete"
+msgstr "Удаление пользователя"
 
 #: .\task_manager\templates\users\user_form.html:9
 msgid "Registration"
@@ -83,14 +119,6 @@ msgstr "Пользователи"
 #: .\task_manager\templates\users\user_list.html:13
 msgid "Fullname"
 msgstr "Полное имя"
-
-#: .\task_manager\templates\users\user_list.html:14
-msgid "Date of creation"
-msgstr "Дата создания"
-
-#: .\task_manager\templates\users\user_list.html:26
-msgid "Edit"
-msgstr "Изменить"
 
 #~ msgid "Save"
 #~ msgstr "Сохранить"

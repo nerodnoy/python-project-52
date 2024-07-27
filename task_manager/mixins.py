@@ -10,5 +10,5 @@ class UserPermissionMixin(UserPassesTestMixin):
         return obj == self.request.user
 
     def handle_no_permission(self):
-        # Тут добавим сообщение
-        return HttpResponseRedirect(reverse('user_list'))
+        # Тут переработать
+        return HttpResponseRedirect(reverse('login'))

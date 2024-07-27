@@ -3,8 +3,8 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h1>{% trans "User delete" %}</h1>
-<p>{% trans "Are you sure you want to delete" %} {{ user.username }}?</p>
+<h1>{% trans "Status delete" %}</h1>
+<p>{% trans "Are you sure you want to delete" %} {{ status.name }}?</p>
 <form method="post">
     {% csrf_token %}
     <button type="submit">{% trans "Yes, delete" %}</button>

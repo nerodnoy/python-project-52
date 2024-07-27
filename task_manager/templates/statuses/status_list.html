@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<h2>{% trans "Statuses" %}</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>{% trans "Status name" %}</th>
+      <th>{% trans "Date of creation" %}</th>
+      <th></th>
+    </tr>
+  </thead>
+  {% for status in object_list %}
+  <tbody>
+    <tr>
+      <th>{{ status.id }}</th>
+      <td>{{ status.name }}</td>
+      <td>{{ status.date_created }}</td>
+        <td>
+          <a href="{% url 'status_update' status.id %}">{% trans "Edit" %}</a>
+          <br>
+          <a href="{% url 'status_delete' status.id %}">{% trans "Delete" %}</a>
+        </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock %}
