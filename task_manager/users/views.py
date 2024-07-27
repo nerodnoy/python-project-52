@@ -24,6 +24,7 @@ class UserCreateView(CreateView):
     }
 
 
+# Добавить UserPermission
 class UserUpdateView(AuthRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
@@ -36,6 +37,7 @@ class UserUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
+# Добавить UserPermission
 class UserDeleteView(AuthRequiredMixin, DeleteView):
     model = User
     template_name = 'users/user_delete.html'

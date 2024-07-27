@@ -22,7 +22,7 @@ class StatusCreateView(AuthRequiredMixin, CreateView):
     }
 
 
-# class StatusUpdateView(LoginRequiredMixin, UserPermissionMixin, UpdateView):
+# Добавить UserPermission
 class StatusUpdateView(AuthRequiredMixin, UpdateView):
     model = Status
     form_class = StatusForm
@@ -35,10 +35,8 @@ class StatusUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
+# Добавить UserPermission
 class StatusDeleteView(AuthRequiredMixin, DeleteView):
     model = Status
     success_url = reverse_lazy('status_list')
-    template_name = 'statuses/delete_status.html'
-
-    protected_message = 'Status in use'
-    protected_url = reverse_lazy('status_list')
+    template_name = 'statuses/status_delete.html'
