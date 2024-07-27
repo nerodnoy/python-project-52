@@ -5,6 +5,8 @@
 {% block content %}
 <h2>{% trans "Statuses" %}</h2>
 
+<a class="nav-link button" href="{% url 'status_create' %}">{% trans "Create status" %}</a>
+
 <table class="table">
   <thead>
     <tr>
