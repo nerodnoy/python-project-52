@@ -5,15 +5,15 @@
 {% block content %}
 
 <form method="post">
-<div class="container col-7">
-  <br>
-  <div class="form-group">
-    <h1>{{ title }}</h1>
-    <br>
-    {% csrf_token %}
-        {% bootstrap_form form %}
-        {% bootstrap_button button_name button_type="submit" button_class="btn btn-primary" %}
-  </div>
-</div>
+    <div class="mb-3">
+        <br>
+        <h3>{{ title }}</h3>
+        <div class="form-group">
+            <br>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_name button_type="submit" button_class="btn btn-primary" %}
+        </div>
+    </div>
 </form>
 {% endblock %}

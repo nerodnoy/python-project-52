@@ -57,7 +57,7 @@ msgstr "Выход"
 
 #: .\task_manager\templates\statuses\status_delete.html:6
 msgid "Status delete"
-msgstr "Удаление пользователя"
+msgstr "Удаление статуса"
 
 #: .\task_manager\templates\statuses\status_delete.html:7
 #: .\task_manager\templates\users\user_delete.html:7
