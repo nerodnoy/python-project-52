@@ -1,10 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .forms import UserForm
 from .models import User
-from ..mixins import AuthRequiredMixin
+from ..mixins import AuthRequiredMixin, OwnerRequiredMixin
 
 
 class UserListView(ListView):
@@ -24,8 +23,7 @@ class UserCreateView(CreateView):
     }
 
 
-# Добавить UserPermission
-class UserUpdateView(AuthRequiredMixin, UpdateView):
+class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
@@ -37,8 +35,7 @@ class UserUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
-# Добавить UserPermission
-class UserDeleteView(AuthRequiredMixin, DeleteView):
+class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteView):
     model = User
     template_name = 'users/user_delete.html'
     success_url = reverse_lazy('user_list')

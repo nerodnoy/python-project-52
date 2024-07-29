@@ -10,3 +10,12 @@ class AuthRequiredMixin(LoginRequiredMixin):
             return redirect(reverse_lazy('login'))
 
         return super().dispatch(request, *args, **kwargs)
+
+
+class OwnerRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        obj = self.get_object()
+        return obj == self.request.user
+
+    def handle_no_permission(self):
+        return redirect('user_list')
