@@ -22,7 +22,6 @@ class StatusCreateView(AuthRequiredMixin, CreateView):
     }
 
 
-# Добавить UserPermission
 class StatusUpdateView(AuthRequiredMixin, UpdateView):
     model = Status
     form_class = StatusForm
@@ -35,7 +34,6 @@ class StatusUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
-# Добавить UserPermission
 class StatusDeleteView(AuthRequiredMixin, DeleteView):
     model = Status
     success_url = reverse_lazy('status_list')
