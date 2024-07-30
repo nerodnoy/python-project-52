@@ -1,3 +1,4 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
@@ -11,11 +12,14 @@ class UserListView(ListView):
     template_name = 'users/user_list.html'
 
 
-class UserCreateView(CreateView):
+class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
     success_url = reverse_lazy('login')
+
+    # flash-сообщение
+    success_message = 'User created successfully!'
 
     extra_context = {
         'title': 'Create user',
