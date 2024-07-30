@@ -14,9 +14,10 @@
                 <a class="nav-link" href="{% url 'status_list' %}">{% trans 'Statuses' %}</a>
             </li>
             <li class="nav-item">
-                <form id="logout-form" method="post" action="{% url 'logout' %}">
+                <form id="logout-form" action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-link">{% trans 'Logout' %}</button>
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                    <input class="btn nav-link" type="submit" value="{% trans 'Logout' %}">
                 </form>
             </li>
             {% else %}
