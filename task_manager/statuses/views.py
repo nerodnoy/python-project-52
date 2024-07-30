@@ -1,6 +1,6 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from task_manager.mixins import AuthRequiredMixin
+from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
 from task_manager.statuses.forms import StatusForm
 from task_manager.statuses.models import Status
 
@@ -34,7 +34,7 @@ class StatusUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
-class StatusDeleteView(AuthRequiredMixin, DeleteView):
+class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin, DeleteView):
     model = Status
     success_url = reverse_lazy('status_list')
     template_name = 'statuses/status_delete.html'

@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
@@ -19,3 +20,15 @@ class OwnerRequiredMixin(UserPassesTestMixin):
 
     def handle_no_permission(self):
         return redirect('user_list')
+
+
+class DeleteProtectionMixin:
+
+    protected_message = "Cannot delete this status because it is currently associated with a task."
+    protected_url = reverse_lazy('status_list')
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            return redirect(self.protected_url)
