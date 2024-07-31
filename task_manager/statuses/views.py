@@ -15,9 +15,9 @@ class StatusCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/status_form.html'
-    success_url = reverse_lazy('status_list')
 
     # SuccessMessageMixin:
+    success_url = reverse_lazy('status_list')
     success_message = 'Status created successfully'
 
     extra_context = {
@@ -30,9 +30,9 @@ class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/status_form.html'
-    success_url = reverse_lazy('status_list')
 
     # SuccessMessageMixin:
+    success_url = reverse_lazy('status_list')
     success_message = 'Status updated successfully'
 
     extra_context = {
@@ -44,9 +44,9 @@ class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
     model = Status
     template_name = 'statuses/status_delete.html'
-    success_url = reverse_lazy('status_list')
 
     # SuccessMessageMixin:
+    success_url = reverse_lazy('status_list')
     success_message = 'Status deleted successfully'
 
     # DeleteProtectionMixin:
