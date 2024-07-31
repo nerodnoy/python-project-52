@@ -16,9 +16,9 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
-    success_url = reverse_lazy('login')
 
-    # flash-сообщение
+    # SuccessMessageMixin:
+    success_url = reverse_lazy('login')
     success_message = 'User created successfully!'
 
     extra_context = {
@@ -32,9 +32,11 @@ class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, SuccessMessageMixin,
     form_class = UserForm
     template_name = 'users/user_form.html'
 
+    # SuccessMessageMixin:
     success_url = reverse_lazy('user_list')
     success_message = 'User updated successfully!'
 
+    # OwnerRequiredMixin:
     permission_message = 'You are not allowed to edit another user!'
     permission_url = reverse_lazy('user_list')
 
@@ -48,8 +50,11 @@ class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixi
     model = User
     template_name = 'users/user_delete.html'
 
+    # SuccessMessageMixin:
     success_url = reverse_lazy('user_list')
     success_message = 'User deleted successfully'
 
+    # DeleteProtectionMixin:
+    # TO TEST:
     protected_message = 'Unable to delete a user because he is being used'
     protected_url = reverse_lazy('user_list')

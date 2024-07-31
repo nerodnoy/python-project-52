@@ -15,13 +15,14 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     form_class = AuthenticationForm
     next_page = reverse_lazy('home')
 
+    # SuccessMessageMixin:
     success_message = 'You are logged in'
 
 
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('home')
 
-    # Logout flash-message
+    # Logout flash-message manually created
     def dispatch(self, request, *args, **kwargs):
         messages.info(request, 'You are logged out')
         return super().dispatch(request, *args, **kwargs)

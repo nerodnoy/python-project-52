@@ -1,3 +1,4 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
@@ -10,11 +11,14 @@ class StatusListView(AuthRequiredMixin, ListView):
     template_name = 'statuses/status_list.html'
 
 
-class StatusCreateView(AuthRequiredMixin, CreateView):
+class StatusCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/status_form.html'
     success_url = reverse_lazy('status_list')
+
+    # SuccessMessageMixin:
+    success_message = 'Status created successfully'
 
     extra_context = {
         'title': 'Create status',
@@ -22,11 +26,14 @@ class StatusCreateView(AuthRequiredMixin, CreateView):
     }
 
 
-class StatusUpdateView(AuthRequiredMixin, UpdateView):
+class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/status_form.html'
     success_url = reverse_lazy('status_list')
+
+    # SuccessMessageMixin:
+    success_message = 'Status updated successfully'
 
     extra_context = {
         'title': 'Update status',
@@ -34,7 +41,15 @@ class StatusUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
-class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin, DeleteView):
+class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
     model = Status
-    success_url = reverse_lazy('status_list')
     template_name = 'statuses/status_delete.html'
+    success_url = reverse_lazy('status_list')
+
+    # SuccessMessageMixin:
+    success_message = 'Status deleted successfully'
+
+    # DeleteProtectionMixin:
+    # TO TEST:
+    protected_message = 'Can NOT delete status because it is currently in use'
+    protected_url = reverse_lazy('status_list')
