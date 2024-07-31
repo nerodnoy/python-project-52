@@ -1,6 +1,7 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
-from task_manager.mixins import AuthRequiredMixin
+from task_manager.mixins import AuthRequiredMixin, OwnerRequiredMixin
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
@@ -11,14 +12,14 @@ class TaskListView(AuthRequiredMixin, ListView):
     template_name = 'tasks/task_list.html'
 
 
-class TaskCreateView(AuthRequiredMixin, CreateView):
+class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/task_form.html'
     success_url = reverse_lazy('task_list')
 
     # SuccessMessageMixin:
-    # success_message = 'Status created successfully'
+    success_message = 'Task created successfully'
 
     extra_context = {
         'title': 'Create task',
@@ -33,14 +34,14 @@ class TaskCreateView(AuthRequiredMixin, CreateView):
 
 
 # SuccessMessageMixin
-class TaskUpdateView(AuthRequiredMixin, UpdateView):
+class TaskUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/task_form.html'
     success_url = reverse_lazy('task_list')
 
     # SuccessMessageMixin:
-    # success_message = 'Status updated successfully'
+    success_message = 'Task edited successfully'
 
     extra_context = {
         'title': 'Edit task',
@@ -48,16 +49,14 @@ class TaskUpdateView(AuthRequiredMixin, UpdateView):
     }
 
 
-# SuccessMessageMixin + DeleteProtectionMixin
-class TaskDeleteView(AuthRequiredMixin, DeleteView):
+class TaskDeleteView(AuthRequiredMixin, OwnerRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = 'tasks/task_delete.html'
-    # success_url = reverse_lazy('status_list')
+    success_url = reverse_lazy('task_list')
 
     # SuccessMessageMixin:
-    # success_message = 'Status deleted successfully'
+    success_message = 'Task deleted successfully'
 
-    # DeleteProtectionMixin:
-    # TO TEST:
-    # protected_message = 'Can NOT delete task because it is currently in use'
-    # protected_url = reverse_lazy('status_list')
+    # OwnerRequiredMixin:
+    permission_message = "The task can be deleted by its' author only"
+    permission_url = reverse_lazy('task_list')

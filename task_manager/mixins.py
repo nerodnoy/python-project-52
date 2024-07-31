@@ -16,8 +16,8 @@ class AuthRequiredMixin(LoginRequiredMixin):
 
 class OwnerRequiredMixin(UserPassesTestMixin):
 
-    permission_message = 'You are not allowed to edit another user!'
-    permission_url = reverse_lazy('user_list')
+    permission_message = None
+    permission_url = None
 
     def test_func(self):
         obj = self.get_object()

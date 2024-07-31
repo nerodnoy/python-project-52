@@ -6,7 +6,7 @@
 
 <h2>{% trans "Tasks" %}</h2>
 
-<a class="nav-link button" href="{% url 'task_create' %}">{% trans "Create status" %}</a>
+<a class="nav-link button" href="{% url 'task_create' %}">{% trans "Create task" %}</a>
 
 <table class="table">
     <thead>
@@ -30,9 +30,9 @@
         <td>{{ task.executor }}</td>
         <td>{{ task.date_created|date:"d.m.Y H:i" }}</td>
         <td>
-            <a href="{% url 'task_update' user.id %}">{% trans "Edit" %}</a>
+            <a href="{% url 'task_update' task.id %}">{% trans "Edit" %}</a>
             <br>
-            <a href="{% url 'task_delete' user.id %}">{% trans "Delete" %}</a>
+            <a href="{% url 'task_delete' task.id %}">{% trans "Delete" %}</a>
         </td>
     </tr>
     </tbody>
