@@ -54,6 +54,10 @@ class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixi
     # SuccessMessageMixin:
     success_message = 'User deleted successfully'
 
+    # OwnerRequiredMixin:
+    permission_message = 'You are not allowed to edit another user!'
+    permission_url = reverse_lazy('user_list')
+
     # DeleteProtectionMixin:
     protected_message = 'Unable to delete a user because he is currently in use'
     protected_url = reverse_lazy('user_list')
