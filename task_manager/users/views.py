@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .forms import UserForm
 from .models import User
-from ..mixins import AuthRequiredMixin, OwnerRequiredMixin
+from ..mixins import AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixin
 
 
 class UserListView(ListView):
@@ -27,11 +27,16 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     }
 
 
-class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, UpdateView):
+class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
+
     success_url = reverse_lazy('user_list')
+    success_message = 'User updated successfully!'
+
+    permission_message = 'You are not allowed to edit another user!'
+    permission_url = reverse_lazy('user_list')
 
     extra_context = {
         'title': 'Update user',
@@ -39,8 +44,12 @@ class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, UpdateView):
     }
 
 
-class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteView):
+class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'users/user_delete.html'
-    success_url = reverse_lazy('user_list')
 
+    success_url = reverse_lazy('user_list')
+    success_message = 'User deleted successfully'
+
+    protected_message = 'Unable to delete a user because he is being used'
+    protected_url = reverse_lazy('user_list')
