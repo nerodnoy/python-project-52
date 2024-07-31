@@ -1,10 +1,15 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from task_manager.mixins import AuthRequiredMixin, OwnerRequiredMixin
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'tasks/task_detail.html'
 
 
 class TaskListView(AuthRequiredMixin, ListView):
