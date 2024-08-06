@@ -1,4 +1,3 @@
-from loguru import logger
 from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
@@ -23,14 +22,10 @@ class CrudUsersTestCase(TestCase):
         }
         self.users_count_before_test = User.objects.count()
 
-    def log_success(self, message):
-        logger.info(message)
-
     def test_create_user(self):
         response = self.client.post(reverse('user_create'), self.data_for_form, follow=True)
         self.assertRedirects(response, self.login_url)
         self.assertEqual(User.objects.count(), self.users_count_before_test + 1)
-        self.log_success("User successfully created.")
 
     def test_update_my_user(self):
         user = User.objects.get(pk=2)
@@ -43,7 +38,6 @@ class CrudUsersTestCase(TestCase):
         post_response = self.client.post(reverse('user_update', args=[2]), updated_data)
         self.assertRedirects(post_response, self.user_list_url)
         self.assertEqual(User.objects.get(pk=2).username, 'UserUpdated')
-        self.log_success("User successfully updated.")
 
     def test_delete_my_user(self):
         user = User.objects.get(pk=1337)
@@ -51,4 +45,3 @@ class CrudUsersTestCase(TestCase):
         response = self.client.post(reverse('user_delete', args=[1337]), follow=True)
         self.assertRedirects(response, self.user_list_url)
         self.assertEqual(User.objects.count(), self.users_count_before_test - 1)
-        self.log_success("User successfully deleted.")

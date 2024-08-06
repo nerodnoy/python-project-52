@@ -1,0 +1,62 @@
+[
+    {
+        "model": "tasks.task",
+        "pk": 1,
+        "fields": {
+            "name": "Design Landing Page",
+            "description": "Create the design for the new product landing page.",
+            "status": 1,
+            "author": 1,
+            "executor": 2,
+            "date_created": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 2,
+        "fields": {
+            "name": "Implement Authentication System",
+            "description": "Set up authentication using Django Allauth.",
+            "status": 2,
+            "author": 2,
+            "executor": 3,
+            "date_created": "2024-01-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 3,
+        "fields": {
+            "name": "Database Migration",
+            "description": "Migrate the database to PostgreSQL.",
+            "status": 1,
+            "author": 3,
+            "executor": 4,
+            "date_created": "2024-01-03T00:00:00Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 4,
+        "fields": {
+            "name": "Write Unit Tests",
+            "description": "Ensure 80% test coverage across the entire project.",
+            "status": 2,
+            "author": 4,
+            "executor": 5,
+            "date_created": "2024-01-04T00:00:00Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 5,
+        "fields": {
+            "name": "Deploy to Production",
+            "description": "Deploy the latest stable version to the production server.",
+            "status": 1,
+            "author": 5,
+            "executor": 1,
+            "date_created": "2024-01-05T00:00:00Z"
+        }
+    }
+]
