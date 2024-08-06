@@ -28,6 +28,19 @@ class OwnerRequiredMixin(UserPassesTestMixin):
         return redirect(self.permission_url)
 
 
+class AuthorRequiredMixin(UserPassesTestMixin):
+    permission_message = None
+    permission_url = None
+
+    def test_func(self):
+        obj = self.get_object()
+        # Проверяем, что текущий пользователь является автором задачи
+        return obj.author == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.permission_message)
+        return redirect(self.permission_url)
+
 class DeleteProtectionMixin:
 
     protected_message = None
