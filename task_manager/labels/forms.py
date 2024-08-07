@@ -1,0 +1,2 @@
+class LabelForm:
+    pass
