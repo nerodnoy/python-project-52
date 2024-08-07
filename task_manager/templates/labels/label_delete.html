@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<h1>{% trans "Label delete" %}</h1>
+<p>{% trans "Are you sure you want to delete" %} {{ label.name }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">{% trans "Yes, delete" %}</button>
+</form>
+{% endblock %}
