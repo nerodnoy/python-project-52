@@ -50,5 +50,5 @@ class LabelDeleteView(AuthRequiredMixin, DeleteProtectionMixin, SuccessMessageMi
     success_message = 'Label deleted successfully'
 
     # DeleteProtectionMixin:
-    protected_message = 'Can NOT delete label because it is currently in use'
+    protected_message = 'Can NOT delete label because it is associated with Task'
     protected_url = reverse_lazy('label_list')
