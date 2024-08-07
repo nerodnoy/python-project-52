@@ -4,6 +4,14 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
+def rollbar(request):
+    a = None
+    a.hello()  # Creating an error with an invalid line of code
+    return HttpResponse("Hello, world. You're at the pollapp index.")
 
 
 class IndexView(TemplateView):

@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['webserver', '127.0.0.1', 'python-project-52-oxkt.onrender.com']
 
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -97,7 +98,9 @@ if DEBUG:
 else:
     # Настройки базы данных для продакшена
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL')),
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL'),
+        )
     }
 
 # Password validation
@@ -167,5 +170,11 @@ MESSAGE_TAGS = {
     message_constants.ERROR: 'danger',
 }
 
-
 # MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
