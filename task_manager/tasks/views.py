@@ -7,7 +7,7 @@ from task_manager.tasks.models import Task
 from task_manager.users.models import User
 
 
-class TaskDetailView(DetailView):
+class TaskDetailView(AuthRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/task_detail.html'
 

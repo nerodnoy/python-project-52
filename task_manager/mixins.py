@@ -9,13 +9,13 @@ class AuthRequiredMixin(LoginRequiredMixin):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
+            messages.error(request, 'You are not authorized! Please, log in')
             return redirect(reverse_lazy('login'))
 
         return super().dispatch(request, *args, **kwargs)
 
 
 class OwnerRequiredMixin(UserPassesTestMixin):
-
     permission_message = None
     permission_url = None
 
@@ -41,8 +41,8 @@ class AuthorRequiredMixin(UserPassesTestMixin):
         messages.error(self.request, self.permission_message)
         return redirect(self.permission_url)
 
-class DeleteProtectionMixin:
 
+class DeleteProtectionMixin:
     protected_message = None
     protected_url = None
 
