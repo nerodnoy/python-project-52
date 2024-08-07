@@ -1,7 +1,9 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
-from task_manager.mixins import AuthRequiredMixin, OwnerRequiredMixin, AuthorRequiredMixin
+from django.views.generic import UpdateView, DeleteView, CreateView, DetailView
+from django_filters.views import FilterView
+from task_manager.mixins import AuthRequiredMixin, AuthorRequiredMixin
+from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
@@ -12,9 +14,13 @@ class TaskDetailView(AuthRequiredMixin, DetailView):
     template_name = 'tasks/task_detail.html'
 
 
-class TaskListView(AuthRequiredMixin, ListView):
+class TaskFilterView(AuthRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/task_list.html'
+
+    extra_context = {
+        'button_name': 'Show',
+    }
 
 
 class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
