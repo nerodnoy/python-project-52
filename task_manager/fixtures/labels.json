@@ -1,0 +1,26 @@
+[
+  {
+    "model": "labels.label",
+    "pk": 1,
+    "fields": {
+      "name": "Bug",
+      "date_created": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 2,
+    "fields": {
+      "name": "Feature",
+      "date_created": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 3,
+    "fields": {
+      "name": "Enhancement",
+      "date_created": "2024-01-01T00:00:00Z"
+    }
+  }
+]
