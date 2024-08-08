@@ -24,6 +24,9 @@ jobs:
       - name: Run tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ROLLBAR_KEY: ${{ secrets.ROLLBAR_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DEBUG: True
         run: |
           make test
 
@@ -32,6 +35,9 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ROLLBAR_KEY: ${{ secrets.ROLLBAR_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DEBUG: True
         with:
           coverageCommand: make test-coverage
           debug: true
