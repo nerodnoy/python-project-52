@@ -12,5 +12,6 @@ test:
 	poetry run python manage.py test
 
 test-coverage:
-	poetry run coverage run ./manage.py test && poetry run coverage report -m
+	poetry run coverage run manage.py test
+	poetry run coverage report -m
 	poetry run coverage xml
