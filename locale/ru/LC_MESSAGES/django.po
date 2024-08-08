@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-08 18:52+0300\n"
+"POT-Creation-Date: 2024-08-08 23:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,10 @@ msgstr "Метка успешно удалена"
 #: .\task_manager\labels\views.py:55
 msgid "Can NOT delete label because it is associated with Task"
 msgstr "Невозможно удалить метку, потому что она используется"
+
+#: .\task_manager\mixins.py:11
+msgid "You are not authorized! Please, log in"
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: .\task_manager\statuses\views.py:22
 msgid "Status created successfully"
@@ -224,7 +228,7 @@ msgstr "Пользователи"
 #: .\task_manager\templates\navbar.html:14
 #: .\task_manager\templates\statuses\status_list.html:6
 msgid "Statuses"
-msgstr "Cтатусы"
+msgstr "Статусы"
 
 #: .\task_manager\templates\navbar.html:20
 #: .\task_manager\templates\tasks\task_list.html:7
