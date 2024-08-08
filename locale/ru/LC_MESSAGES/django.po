@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-08 18:42+0300\n"
+"POT-Creation-Date: 2024-08-08 18:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,8 +235,8 @@ msgstr "Задачи"
 msgid "Logout"
 msgstr "Выход"
 
-#: .\task_manager\templates\navbar.html:34 .\task_manager\users\views.py:27
-msgid "Register"
+#: .\task_manager\templates\navbar.html:34
+msgid "Registration"
 msgstr "Регистрация"
 
 #: .\task_manager\templates\statuses\status_delete.html:6
@@ -248,10 +248,8 @@ msgid "Status name"
 msgstr "Имя"
 
 #: .\task_manager\templates\tasks\task_delete.html:6
-#, fuzzy
-#| msgid "Status delete"
 msgid "Task delete"
-msgstr "Удаление статуса"
+msgstr "Удаление задачи"
 
 #: .\task_manager\templates\tasks\task_detail.html:7
 msgid "Show Task"
@@ -281,6 +279,10 @@ msgstr "Пользователь успешно зарегистрирован"
 #: .\task_manager\users\views.py:26
 msgid "Create user"
 msgstr "Регистрация"
+
+#: .\task_manager\users\views.py:27
+msgid "Register"
+msgstr "Зарегистрировать"
 
 #: .\task_manager\users\views.py:39
 msgid "User updated successfully!"
