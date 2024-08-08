@@ -258,7 +258,7 @@ msgstr "Просмотр задачи"
 #: .\task_manager\templates\tasks\task_detail.html:35
 #: .\task_manager\templates\tasks\task_list.html:30
 msgid "Creation date"
-msgstr "Создать статус"
+msgstr "Дата создания"
 
 #: .\task_manager\templates\users\user_delete.html:6
 msgid "User delete"
