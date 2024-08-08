@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
 from task_manager.labels.forms import LabelForm
 from task_manager.labels.models import Label
+from django.utils.translation import gettext as _
 
 
 class LabelListView(AuthRequiredMixin, ListView):
@@ -18,11 +19,11 @@ class LabelCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('label_list')
 
     # SuccessMessageMixin:
-    success_message = 'Label created successfully'
+    success_message = _('Label created successfully')
 
     extra_context = {
-        'title': 'Create label',
-        'button_name': 'Create',
+        'title': _('Create label'),
+        'button_name': _('Create'),
     }
 
 
@@ -33,11 +34,11 @@ class LabelUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('label_list')
 
     # SuccessMessageMixin:
-    success_message = 'Label updated successfully'
+    success_message = _('Label updated successfully')
 
     extra_context = {
-        'title': 'Update label',
-        'button_name': 'Update',
+        'title': _('Update label'),
+        'button_name': _('Edit'),
     }
 
 
@@ -48,8 +49,8 @@ class LabelDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
     success_url = reverse_lazy('label_list')
 
     # SuccessMessageMixin:
-    success_message = 'Label deleted successfully'
+    success_message = _('Label deleted successfully')
 
     # DeleteProtectionMixin:
-    protected_message = 'Can NOT delete label because it is associated with Task'
+    protected_message = _('Can NOT delete label because it is associated with Task')
     protected_url = reverse_lazy('label_list')

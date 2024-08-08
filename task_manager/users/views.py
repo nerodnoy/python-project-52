@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from .forms import UserForm
 from .models import User
 from ..mixins import AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixin
+from django.utils.translation import gettext as _
 
 
 class UserListView(ListView):
@@ -19,11 +20,11 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('login')
 
     # SuccessMessageMixin:
-    success_message = 'User created successfully!'
+    success_message = _('User created successfully!')
 
     extra_context = {
-        'title': 'Create user',
-        'button_name': 'Register',
+        'title': _('Create user'),
+        'button_name': _('Register'),
     }
 
 
@@ -35,15 +36,15 @@ class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin,
     success_url = reverse_lazy('user_list')
 
     # SuccessMessageMixin:
-    success_message = 'User updated successfully!'
+    success_message = _('User updated successfully!')
 
     # OwnerRequiredMixin:
-    permission_message = 'You are not allowed to edit another user!'
+    permission_message = _('You are not allowed to edit another user!')
     permission_url = reverse_lazy('user_list')
 
     extra_context = {
-        'title': 'Update user',
-        'button_name': 'Update',
+        'title': _('Update user'),
+        'button_name': _('Update'),
     }
 
 
@@ -54,12 +55,12 @@ class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixi
     success_url = reverse_lazy('user_list')
 
     # SuccessMessageMixin:
-    success_message = 'User deleted successfully'
+    success_message = _('User deleted successfully')
 
     # OwnerRequiredMixin:
-    permission_message = 'You are not allowed to edit another user!'
+    permission_message = _('You are not allowed to edit another user!')
     permission_url = reverse_lazy('user_list')
 
     # DeleteProtectionMixin:
-    protected_message = 'Unable to delete a user because he is currently in use'
+    protected_message = _('Unable to delete a user because he is currently in use')
     protected_url = reverse_lazy('user_list')
