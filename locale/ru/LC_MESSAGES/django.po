@@ -302,7 +302,7 @@ msgstr "Изменить"
 
 #: .\task_manager\users\views.py:58
 msgid "User deleted successfully"
-msgstr "Удаление пользователя"
+msgstr "Пользователь успешно удален"
 
 #: .\task_manager\users\views.py:65
 msgid "Unable to delete a user because he is currently in use"
