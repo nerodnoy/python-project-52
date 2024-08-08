@@ -294,7 +294,7 @@ msgstr "У вас нет прав для изменения другого по�
 
 #: .\task_manager\users\views.py:46
 msgid "Update user"
-msgstr "Изменить"
+msgstr "Изменение пользователя"
 
 #: .\task_manager\users\views.py:47
 msgid "Update"
