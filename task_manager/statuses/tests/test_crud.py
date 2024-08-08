@@ -31,14 +31,18 @@ class CrudStatusesTestCase(TestCase):
         self.assertContains(response, 'In Progress')
 
     def test_create_status(self):
-        response = self.client.post(self.status_create_url, self.new_status_data, follow=True)
+        response = self.client.post(
+            self.status_create_url, self.new_status_data, follow=True
+        )
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, self.status_list_url)
         self.assertTrue(Status.objects.filter(name='Completed').exists())
 
     def test_update_status(self):
         status = Status.objects.get(pk=1)
-        response = self.client.post(self.status_update_url(status.pk), self.updated_status_data, follow=True)
+        response = self.client.post(
+            self.status_update_url(status.pk), self.updated_status_data, follow=True
+        )
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, self.status_list_url)
         status.refresh_from_db()
@@ -53,13 +57,17 @@ class CrudStatusesTestCase(TestCase):
 
     def test_create_status_if_not_logged_in(self):
         self.client.logout()
-        response = self.client.post(self.status_create_url, self.new_status_data, follow=True)
+        response = self.client.post(
+            self.status_create_url, self.new_status_data, follow=True
+        )
         self.assertRedirects(response, self.login_url)
 
     def test_update_status_if_not_logged_in(self):
         self.client.logout()
         status = Status.objects.get(pk=1)
-        response = self.client.post(self.status_update_url(status.pk), self.updated_status_data, follow=True)
+        response = self.client.post(
+            self.status_update_url(status.pk), self.updated_status_data, follow=True
+        )
         self.assertRedirects(response, self.login_url)
 
     def test_delete_status_if_not_logged_in(self):

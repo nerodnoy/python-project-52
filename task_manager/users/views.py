@@ -27,7 +27,8 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     }
 
 
-class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, SuccessMessageMixin, UpdateView):
+class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin,
+                     SuccessMessageMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = 'users/user_form.html'
@@ -46,7 +47,8 @@ class UserUpdateView(AuthRequiredMixin, OwnerRequiredMixin, SuccessMessageMixin,
     }
 
 
-class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(AuthRequiredMixin, OwnerRequiredMixin, DeleteProtectionMixin,
+                     SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'users/user_delete.html'
     success_url = reverse_lazy('user_list')

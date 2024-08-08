@@ -41,7 +41,8 @@ class LabelUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class LabelDeleteView(AuthRequiredMixin, DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
+class LabelDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
+                      SuccessMessageMixin, DeleteView):
     model = Label
     template_name = 'labels/label_delete.html'
     success_url = reverse_lazy('label_list')

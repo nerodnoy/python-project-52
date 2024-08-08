@@ -29,7 +29,9 @@ class CrudUsersTestCase(TestCase):
         self.assertContains(response, 'Bug')
 
     def test_user_create(self):
-        response = self.client.post(reverse('user_create'), self.data_for_form, follow=True)
+        response = self.client.post(
+            reverse('user_create'), self.data_for_form, follow=True
+        )
         self.assertRedirects(response, self.login_url)
         self.assertEqual(User.objects.count(), self.users_count_before_test + 1)
 

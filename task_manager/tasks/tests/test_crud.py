@@ -39,14 +39,18 @@ class CrudTasksTestCase(TestCase):
         self.assertTemplateUsed(response, 'tasks/task_list.html')
 
     def test_create_task(self):
-        response = self.client.post(self.task_create_url, self.new_task_data, follow=True)
+        response = self.client.post(
+            self.task_create_url, self.new_task_data, follow=True
+        )
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, self.task_list_url)
         self.assertTrue(Task.objects.filter(name='New Task').exists())
 
     def test_update_task(self):
         task = Task.objects.get(pk=1)
-        response = self.client.post(self.task_update_url(task.pk), self.updated_task_data, follow=True)
+        response = self.client.post(
+            self.task_update_url(task.pk), self.updated_task_data, follow=True
+        )
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, self.task_list_url)
         task.refresh_from_db()
@@ -57,7 +61,7 @@ class CrudTasksTestCase(TestCase):
             name='Task to Delete',
             description='This task will be deleted',
             status=Status.objects.first(),
-            author=self.author,  # Убедитесь, что задача принадлежит текущему пользователю
+            author=self.author,
             executor=self.author
         )
         response = self.client.post(self.task_delete_url(task.pk), follow=True)
@@ -80,13 +84,17 @@ class CrudTasksTestCase(TestCase):
 
     def test_create_task_if_not_logged_in(self):
         self.client.logout()
-        response = self.client.post(self.task_create_url, self.new_task_data, follow=True)
+        response = self.client.post(
+            self.task_create_url, self.new_task_data, follow=True
+        )
         self.assertRedirects(response, self.login_url)
 
     def test_update_task_if_not_logged_in(self):
         self.client.logout()
         task = Task.objects.get(pk=1)
-        response = self.client.post(self.task_update_url(task.pk), self.updated_task_data, follow=True)
+        response = self.client.post(
+            self.task_update_url(task.pk), self.updated_task_data, follow=True
+        )
         self.assertRedirects(response, self.login_url)
 
     def test_delete_task_if_not_logged_in(self):

@@ -11,7 +11,7 @@ class CrudLabelsTestCase(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.get(pk=1)  # Используем пользователя с ID 1
+        self.user = User.objects.get(pk=1)
         self.client.force_login(self.user)
         self.label_list_url = reverse('label_list')
         self.label_create_url = reverse('label_create')
@@ -33,14 +33,18 @@ class CrudLabelsTestCase(TestCase):
         self.assertContains(response, 'Bug')
 
     def test_create_label(self):
-        response = self.client.post(self.label_create_url, self.new_label_data, follow=True)
+        response = (
+            self.client.post(self.label_create_url, self.new_label_data, follow=True)
+        )
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, self.label_list_url)
         self.assertTrue(Label.objects.filter(name='Important').exists())
 
     def test_update_label(self):
         label = Label.objects.get(pk=1)
-        response = self.client.post(self.label_update_url(label.pk), self.updated_label_data, follow=True)
+        response = self.client.post(
+            self.label_update_url(label.pk), self.updated_label_data, follow=True
+        )
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, self.label_list_url)
         label.refresh_from_db()
@@ -76,13 +80,17 @@ class CrudLabelsTestCase(TestCase):
 
     def test_create_label_if_not_logged_in(self):
         self.client.logout()
-        response = self.client.post(self.label_create_url, self.new_label_data, follow=True)
+        response = self.client.post(
+            self.label_create_url, self.new_label_data, follow=True
+        )
         self.assertRedirects(response, self.login_url)
 
     def test_update_label_if_not_logged_in(self):
         self.client.logout()
         label = Label.objects.get(pk=1)
-        response = self.client.post(self.label_update_url(label.pk), self.updated_label_data, follow=True)
+        response = self.client.post(
+            self.label_update_url(label.pk), self.updated_label_data, follow=True
+        )
         self.assertRedirects(response, self.login_url)
 
     def test_delete_label_if_not_logged_in(self):
