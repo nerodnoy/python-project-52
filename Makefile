@@ -9,7 +9,7 @@ install:
 	poetry build
 
 test:
-	python manage.py test
+	poetry run python manage.py test
 
 test-coverage:
 	poetry run coverage run ./manage.py test && coverage report
