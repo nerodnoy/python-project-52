@@ -23,10 +23,9 @@ class CrudUsersTestCase(TestCase):
         self.users_count_before_test = User.objects.count()
 
     def test_user_list(self):
-        response = self.client.get(self.label_list_url)
+        response = self.client.get(self.user_list_url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'labels/label_list.html')
-        self.assertContains(response, 'Bug')
+        self.assertTemplateUsed(response, 'users/user_list.html')
 
     def test_user_create(self):
         response = self.client.post(
@@ -53,3 +52,28 @@ class CrudUsersTestCase(TestCase):
         response = self.client.post(reverse('user_delete', args=[1337]), follow=True)
         self.assertRedirects(response, self.user_list_url)
         self.assertEqual(User.objects.count(), self.users_count_before_test - 1)
+
+
+class OwnerRequiredMixinTests(TestCase):
+    fixtures = ['users.json']
+
+    def setUp(self):
+        self.user1 = User.objects.get(pk=1)
+        self.user2 = User.objects.get(pk=2)
+        self.client.force_login(self.user1)
+
+    def test_user_can_update_own_profile(self):
+        response = self.client.get(reverse('user_update', args=[self.user1.pk]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_cannot_update_another_profile(self):
+        response = self.client.get(reverse('user_update', args=[self.user2.pk]))
+        self.assertEqual(response.status_code, 302)
+
+    def test_user_can_delete_own_profile(self):
+        response = self.client.get(reverse('user_delete', args=[self.user1.pk]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_cannot_delete_another_profile(self):
+        response = self.client.get(reverse('user_delete', args=[self.user2.pk]))
+        self.assertEqual(response.status_code, 302)
