@@ -21,6 +21,12 @@ jobs:
           pip install poetry
           make install
 
+      - name: Drop existing test database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          psql "${{ secrets.DATABASE_URL }}" -c "DROP DATABASE IF EXISTS test_django_db_bbv9;"
+
       - name: Run tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
