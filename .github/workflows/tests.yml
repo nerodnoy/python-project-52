@@ -1,4 +1,4 @@
-name: code-check
+name: tests
 
 on:
   - push
@@ -7,34 +7,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
+
       - name: Install python
         uses: actions/setup-python@v3
         with:
-          python-version: ^3.12
+          python-version: ^3.10
+
       - name: Install dependencies
         run: |
           pip install poetry
           make install
-      - name: Run tests and lint
+
+      - name: Run tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          ROLLBAR_KEY: ${{ secrets.ROLLBAR_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DEBUG: True
         run: |
-            make test
-            make lint
-      - name: Test & publish code coverage
+          make test
+
+      - name: Run code coverage
         uses: paambaati/codeclimate-action@v3.2.0
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.TEST_COV_SECRET }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          ROLLBAR_KEY: ${{ secrets.ROLLBAR_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DEBUG: True
         with:
           coverageCommand: make test-coverage
           debug: true
-        continue-on-error: true
