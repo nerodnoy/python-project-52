@@ -1,4 +1,4 @@
-name: tests
+name: tests and lint
 
 on:
   - push
@@ -26,6 +26,10 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           psql "${{ secrets.DATABASE_URL }}" -c "DROP DATABASE IF EXISTS test_django_db_bbv9;"
+
+      - name: Run lint
+        run: |
+          make lint
 
       - name: Run tests
         env:
